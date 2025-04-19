@@ -18,6 +18,16 @@ class Student:
         else:
             return 'Ошибка'
     
+        def __average_hw_grade(self):
+            grades_count = 0
+            grades_sum = 0
+            for grade in self.grades:
+                grades_count += len(self.grades[grade])
+                grades_sum += sum(self.grades[grade])
+            if grades_count > 0:
+                return grades_sum / grades_count
+            else:
+                return 0
     
     def __str__(self):
         res = f'Имя: {self.name}\n Фамилия: {self.surname}\n Средняя оценка за домашние задания: {self.average_mark}\n Курсы в процессе изучения: {self.courses_in_progress}\n Завершенные курсы: {self.finished_courses}'
@@ -41,6 +51,17 @@ class Mentor:
  
 class Lecturer(Mentor):
     grades = {}
+
+    def __average_hw_grade(self):
+        grades_count = 0
+        grades_sum = 0
+        for grade in self.grades:
+            grades_count += len(self.grades[grade])
+            grades_sum += sum(self.grades[grade])
+        if grades_count > 0:
+            return grades_sum / grades_count
+        else:
+            return 0       
 
 class Reviewer(Mentor):
      
