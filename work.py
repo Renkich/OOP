@@ -60,19 +60,30 @@ class Reviewer(Mentor):
         return res
 
 def average_student(students_list, course):
+    for student in students_list:
+        if course in student.finished_courses or course in student.courses_in_progress:
+            grades_count = 0
+            grades_sum = 0
+            for grade in student.grades:
+                grades_count = len(student.grades[grade])
+                grades_sum = student.grades[grade]
+            return grades_sum/grades_count
+        else:
+            print('Такого предмета нет')
+'''
+def average_lecturer(lecturer_list, course):
+    for lecturer in lecturer_list:
+        if isinstance(lecturer, Lecturer) and course in lecturer.courses_attached:
+            grades_count = 0
+            grades_sum = 0
+            for grade in lecturer.grades:
+                grades_count = len(lecturer.grades)
+                grades_sum =+ int(grade)
+            return grades_sum/grades_count
+        else:
+            print('Такого предмета нет')
 
-    if course in self.finished_courses and course in self.courses_in_progress:
-        grades_count = 0
-        grades_sum = 0
-        for grade in self.grades:
-            grades_count = len(self.grades[grade])
-            grades_sum =+ self.grades[grade]
-        return grades_sum/grades_count
-    else:
-        print('Такого предмета нет')
-
-
-
+'''
 
         
 
@@ -93,7 +104,11 @@ student_2.courses_in_progress += ['Java']
 students_list = [student_1, student_2]
 
 
-print(f'{average_student(students_list, "Python")}')
+print(f'Средняя оценка студентов по предмету Python {average_student(students_list, 'Python')}')
+
+print(f'Средняя оценка студентов по предмету Java {average_student(students_list, 'Java')}')
+
+
 reviewer_1 = Reviewer('Петр', 'Петров')
 reviewer_1.courses_attached += ['Python']
 reviewer_1.courses_attached += ['Java']
@@ -135,7 +150,11 @@ print(f'Оценки лектору: {lecturer_2.name} {lecturer_2.surname}\n{le
 print("-----------------\n")
 
 lecturer_list = [lecturer_1, lecturer_2]
+'''
+print(f'Средняя оценка лекторов по предмету Python {average_lecturer(lecturer_list, 'Python')}')
 
+print(f'Средняя оценка лекторов по предмету Java {average_lecturer(lecturer_list, 'Java')}')
+'''
 print(student_1)
 
 print(student_2)
