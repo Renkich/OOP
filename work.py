@@ -70,20 +70,20 @@ def average_student(students_list, course):
             return grades_sum/grades_count
         else:
             print('Такого предмета нет')
-'''
+
 def average_lecturer(lecturer_list, course):
     for lecturer in lecturer_list:
         if isinstance(lecturer, Lecturer) and course in lecturer.courses_attached:
             grades_count = 0
             grades_sum = 0
             for grade in lecturer.grades:
-                grades_count = len(lecturer.grades)
-                grades_sum =+ int(grade)
+                grades_count = len(lecturer.grades[grade])
+                grades_sum =+ lecturer.grades[grade]
             return grades_sum/grades_count
         else:
             print('Такого предмета нет')
 
-'''
+
 
         
 
